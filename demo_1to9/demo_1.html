@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myFunction() {
+            document.getElementById("textOut").innerHTML = document.getElementById("textIn").value;
+        }
+    </script>
+</head>
+
+<body>
+    <form style="text-align: center;">
+        <input oninput="myFunction()" id="textIn" value="">
+    </form>
+    <p id="textOut" style="text-align: center;"></p>
+</body>
+
+</html>

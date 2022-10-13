@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>task10</title>
+    <style>
+        #firstdiv {
+            margin-left: 550px;
+            width: 600px;
+        }
+
+        #raw {
+            margin-left: 350px;
+            margin-right: 200px;
+        }
+
+        #appendDiv {
+            margin-top: 10px;
+            margin-left: 350px;
+            margin-right: 200px;
+            /* border: 2px solid gray; */
+            /* height: 300px; */
+        }
+
+        #lastButtons {
+            margin-top: 30px;
+            margin-left: 750px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" class="form-group">
+        <!-- <div id="firstdiv">
+            Name:<input type="text" class="form-control" />
+            <br>
+            URL :<input type="text" class="form-control" />
+            <br>
+            furnel:<input type="email" class="form-control" />
+            <br>
+            Email:<input type="email" class="form-control" />
+            <br>
+            password:<input type="password" class="form-control">
+            <br>
+            password conform:<input type="password" class="form-control">
+        </div> -->
+        <br>
+        <div class="row" id="raw">
+            <div class="col-9 my-3" id="cloneDiv">
+                <label for="">number of members</label>
+                <input type="text" class="input-1" value=100 required>
+                <label for="">percentage</label>
+                <input type="text" class="input-2" value=25 required>
+                <button type="button" onclick="remove()">-</button>
+            </div>
+            <div class="col-3">
+                <button type="button" onclick="myfunction()">+</button>
+            </div>
+        </div>
+        <div id="appendDiv"></div>
+        <div id="lastButtons">
+            <button type="submit">SAVE</button>
+            <button type="submit">CANCEL</button>
+        </div>
+
+    </form>
+
+    <script>
+        var cloneCount = 0;
+        document.getElementsByClassName('input-1').value = 100;
+        document.getElementsByClassName('input-2').value = 25;
+        function myfunction() {
+
+            cloneCount++;
+            console.log(cloneCount);
+            var x = document.getElementById('cloneDiv');
+            var y = x.cloneNode(true);
+            document.getElementById("appendDiv").appendChild(y);
+            var z = document.getElementById('appendDiv').children[cloneCount - 1];
+            document.getElementById('appendDiv').children[cloneCount-1].removeAttribute('id');
+            document.getElementById('appendDiv').children[cloneCount - 1].setAttribute('id', `clone_div_${cloneCount}`);
+            console.log("1111", z.children[1].value = 0);
+            z.children[1].value = '';
+            z.children[3].value = '';
+       
+            // if (clickCount == 1) {
+
+            //   var z= document.getElementById('none').firstChild;
+            //    console.log("ddd",z);
+            // }
+
+        }
+        function remove(){
+            console.log("remove");
+             
+        }
+
+    </script>
+</body>
+
+</html>

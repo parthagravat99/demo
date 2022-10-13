@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function function1() {
+               document.getElementById("ip").stepUp();
+            }
+            function function2() {
+               document.getElementById("ip").stepDown();
+            }
+         </script>
+    </head>
+    <body>
+        <span style="background-color:black;padding: 4px;border-radius: 5px;">
+            <button onclick="function2()" style="border-radius: 3px;">-</button>
+            <input id="ip" value="0" type="number" style="width: 35px;text-align: center;color: white;
+            background-color: black;"disabled>
+            <button onclick="function1()" style="border-radius: 3px;">+</button>
+        </span>
+        </body>
+</html>

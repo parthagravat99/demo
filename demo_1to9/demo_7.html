@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function function1() {
+            const node = document.getElementById("list2").lastChild;
+            const clone = node.cloneNode(true);
+
+            document.getElementById("list1").appendChild(clone);
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="list1">
+        <li>Coffee</li>
+        <li>Tea</li></ul>
+    <ul id="list2">
+        <li>Water</li>
+        <li>Milk</li></ul>
+    <p>Click the button to copy an item from one list to another.</p>
+    <button onclick="function1()">Try it</button>
+
+</body>
+
+</html>

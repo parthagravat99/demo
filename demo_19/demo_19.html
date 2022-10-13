@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+            table,tr,td{
+               border: 1px solid black; 
+               border-collapse: collapse;
+               text-align: center;
+               font-size: 30px;
+               font-family: arial,sans-serif;
+            }
+            
+            tr,td{
+                height: 60px;
+                width: 60px;
+                background-color: #e6ecff;
+            }
+            
+            #display{
+                height: 90px;
+                font-size: 65px;
+                color: white;
+                background-color: black;
+                text-align: right;
+                max-width: 240px;
+               
+            }
+            .operation{
+                background-color: #ffa31a;
+            }
+           
+        </style>
+        <script>
+            $(document).ready(function(){
+                var variable1,variable2,operation,equalto;
+                $(".numbers").click(function(){
+                    if(equalto==true){
+                        $("#display").html("");
+                        equalto=false;
+                    }
+                    $("#display").html($("#display").html()+$(this).attr("value"));
+                });
+
+                $("#clear").click(function(){
+                    $("#display").html($("#display").html().slice(0,-1));
+                });
+
+                $("#allclear").click(function(){
+                    $("#display").html("");
+                    variable1=null;
+                    variable2=null;
+                    operation=null;
+                });
+
+                $(".operation").click(function(){
+                    variable1=parseFloat($("#display").html());
+                    operation=$(this).attr("value");
+                    $("#display").html("");
+                    
+                });
+
+                $("#equalto").click(function(){
+                    variable2=parseFloat($("#display").html());
+                    switch(operation){
+                        case "addition":
+                           $("#display").html(variable1 + variable2);
+                           break;
+                        case "subtraction":
+                           $("#display").html(variable1 - variable2);
+                           break;
+                        case "multiplication":
+                           $("#display").html(variable1 * variable2);
+                           break;
+                       case "division":
+                           $("#display").html(variable1 / variable2);
+                           break;   
+
+                    }
+                    equalto=true;
+                });
+
+                $("#percentage").click(function(){
+                    variable2=parseFloat($("#display").html());
+                    $("#display").html(((variable1 * variable2)/100));
+                    equalto=true;
+                });
+
+                $("#plusminus").click(function(){
+                    $("#display").html(0-parseFloat($("#display").html()));
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <table id="calc">
+            <tr>
+                <td colspan="4" id="display"></td>
+            </tr>
+            <tr>
+                <td id="allclear">AC</td>
+                <td id="plusminus">+|-</td>
+                <td id="percentage" value="percentage">%</td>
+                <td class="operation" value="division">/</td>
+            </tr>
+            <tr>
+                <td value="7" class="numbers">7</td>
+                <td value="8" class="numbers">8</td>
+                <td value="9" class="numbers">9</td>
+                <td class="operation" value="multiplication">x</td>
+            </tr>
+            <tr>
+                <td value="4" class="numbers">4</td>
+                <td value="5" class="numbers">5</td>
+                <td value="6" class="numbers">6</td>
+                <td class="operation" value="subtraction">-</td>
+            </tr>
+            <tr>
+                <td value="1" class="numbers">1</td>
+                <td value="2" class="numbers">2</td>
+                <td value="3" class="numbers">3</td>
+                <td class="operation" value="addition">+</td>
+            </tr>
+            <tr>
+                <td id="clear">C</td>
+                <td value="0" class="numbers">0</td>
+                <td value="." class="numbers">.</td>
+                <td Id="equalto" value="equalto">=</td>
+            </tr>
+        </table>
+    </body>
+</html>

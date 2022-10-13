@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+    <script>
+        $(document).ready(function(){
+            $("#input_form").on("submit",function(e){
+                e.preventDefault();
+
+                var formData=new FormData(this);
+
+                $.ajax({
+                    url:'uploadToDrive.php',
+                    type:'post',
+                    data: formData,
+                    dataType:'html',
+                    contentType:false,
+                    processData:false,
+                    success:function(data){
+                        $("#preview").show();
+                        $("#image_preview").html(data);
+                        $("#input_file").val("");
+                    }
+                });
+            });
+
+            $(document).on("click","#delete_btn",function(){
+                if(confirm("Are you sure you want to delete this image?")){
+                    var path=$("#delete_btn").data("path");
+
+                    $.ajax({
+                        url:"delete.php",
+                        type:"post",
+                        data:{path: path},
+                        success:function(data){
+                            if(data !=""){
+                                $("#preview").hide();
+                                $("#image_preview").html("");
+                            }
+
+                        }
+                    })
+                    
+                }
+            });
+
+            
+                function readIMG(input) {
+                    if (input.files && input.files[0]) {
+                console.log("parth");
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    console.log(e);
+                    $('#imageToCrop').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#input_file").change(function(){
+            readIMG(this);
+        });
+        });
+        
+    </script>
+    
+    <style>
+        #preview{
+            display:none;
+        }
+        #image_preveiew{
+            width: 300px;
+            height: 400px;
+
+        }
+        #image_preview img{
+            display: block;
+            max-width: 100%;
+        }
+    </style>
+
+    </head>
+    <body>
+        <form id="input_form" action="uploadToDrive.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="input_file" id="input_file"><br>
+            <input type="submit" id="file_submit">
+        </form><br>
+        <div id="preview">
+            <h3>Image Preview</h3>
+            <div id="image_preview"></div>
+        </div>
+        
+    </body>
+</html>

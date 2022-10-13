@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task----10</title>
+    <style>
+        .btn {
+            margin-top: 60px;
+            margin-left: 1100px;
+            width: 80px;
+            height: 50px;
+        }
+
+        table,
+        th,
+        td,
+        tr {
+            /* margin-top: 50px; */
+            /* margin-left: 500px; */
+            /* border: 1px solid black; */
+            /* padding: 3px; */
+            /* border-collapse: collapse; */
+
+        }
+
+        #appendDiv {
+            /* margin-left: 500px; */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="row" id="raw">
+            <div class="col-9 my-3" id="cloneDiv">
+                <button type="button" class="btn" onclick="myfunction()">ADD
+                </button>
+                <table>
+                    <thead>
+                        <th>number of members</th>
+                        <th>percentage</th>
+                    </thead>
+
+                    <tr class="clone">
+                        <td><input type="text" name="name[cloneCount]" placeholder="number"></td>
+                        <td><input type="text" placeholder="percentage"></td>
+                        <td><button type="button">delete</button></td>
+                    </tr>
+
+
+                </table>
+
+                <div id="appendDiv"></div>
+
+            </div>
+
+        </div>
+        </div>
+
+        <div id="lastButtons">
+            <button type="submit">SAVE</button>
+            <button type="submit">CANCEL</button>
+        </div>
+    </form>
+
+    <script>
+        var cloneCount = 0;
+        function myfunction() {
+            cloneCount++;
+            console.log(cloneCount);
+            var target = document.getElementsByClassName('clone')[0];
+            // console.log(target);
+            var clone = target.cloneNode(true);
+            document.getElementById('appendDiv').appendChild(clone);
+        }
+
+    </script>
+</body>
+
+</html>

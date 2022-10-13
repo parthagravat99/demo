@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" charset="utf8" src="../DataTables/jQuery-3.6.0/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                
+                    var country=$('.country').select2({
+                    ajax: {
+                        url: 'countryapi.php',
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a country..."
+                });
+                
+               
+                var state=$('.state').select2({
+                    ajax: {
+                        url: function(){
+                            return getStateURL();
+                        },
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a state..."
+
+                });
+                
+                function getStateURL(){
+                    var countryid=$(".country").val();
+                    return "stateapi.php?country_id="+countryid;
+                }
+               
+                var city=$('.city').select2({
+                    ajax: {
+                        url: function(){
+                            return getCityURL();
+                        },
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a city..."
+
+                });
+                
+                function getCityURL(){
+                    var stateid=$(".state").val();
+                    return "cityapi.php?state_id="+stateid;
+                }
+
+                $(".setIndia").on("click", function () {
+                    country.val(102).trigger("change");
+                });
+
+                $(".open").on("click", function () {
+                    country.select2("open");
+                });
+
+                $(".close").on("click", function () {
+                    country.select2("close");
+                });
+
+                $(".reinitialise").on("click", function () {
+                    var country=$('.country').select2({
+                    ajax: {
+                        url: 'countryapi.php',
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a country..."
+                });
+                var state=$('.state').select2({
+                    ajax: {
+                        url: function(){
+                            return getStateURL();
+                        },
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a state..."
+
+                });
+                var city=$('.city').select2({
+                    ajax: {
+                        url: function(){
+                            return getCityURL();
+                        },
+                        dataType: 'json',
+                        
+                    },
+                    placeholder: "select a city..."
+
+                });
+                });
+
+                $(".destroy").on("click", function () {
+                    country.select2("destroy");
+                    state.select2("destroy");
+                    city.select2("destroy");
+
+                });
+               
+                var multistate=$('.multistate').select2();
+                $(".setMHHR").on("click", function () {
+                    multistate.val(["MH","HR"]).trigger("change");
+                });
+
+                $(".clear").on("click", function () {
+                    multistate.val(null).trigger("change");
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <select name="country" class="country" style="width: 50%;" placeholder="select a country">
+        </select>
+        
+        <button class="open">open</button>
+        <button class="close">close</button>
+        <button class="destroy">destroy</button>
+        <button class="reinitialise">re-initialise</button>
+        
+        <select class="state" name="state" style="width: 50%;">
+        </select><br>
+        <select name="city" class="city" style="width: 50%;">
+        </select><br><br>
+
+        <select class="multistate" name="multistate" style="width: 50%;" multiple="multiple">
+            <option value="GJ">Gujarat</option>
+            <option value="RJ">Rajasthan</option>
+            <option value="MH">Maharashtra</option>
+            <option value="MP">Madhya pradesh</option>
+            <option value="CH">Chhattisgarh</option>
+            <option value="WB">West bengal</option>
+            <option value="PB">Panjab</option>
+            <option value="HR">Hariana</option>
+            <option value="TN">Tamilnadu</option>
+            <option value="KR">Keral</option>
+        </select>
+        
+        <button class="setMHHR">set Maharashtra and Hariana</button>
+        <button class="clear">clear</button>
+    </body>
+</html>

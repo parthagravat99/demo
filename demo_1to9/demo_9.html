@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function function1(e) {
+            e.parentElement.querySelector("#ip").stepUp();
+        }
+        function function2(e) {
+            e.parentElement.querySelector("#ip").stepDown();
+        }
+        function function3() {
+            const node = document.getElementById("b1");
+            const clone = node.cloneNode(true);
+            clone.querySelector('input').value = 0;
+            document.body.appendChild(clone);
+        }
+    </script>
+</head>
+
+<body style="float: left;">
+    <button onclick="function3()">New</button>
+    <span style="background-color:black;padding: 4px;border-radius: 5px;margin: 10px;" id="b1">
+        <button onclick="function2(this)" style="border-radius: 3px;">-</button>
+        <input id="ip" type="number" value="0" style="width: 35px;text-align: center;color: white;
+        background-color: black;" disabled>
+        <button onclick="function1(this)" style="border-radius: 3px;">+</button>
+    </span>
+</body>
+
+</html>

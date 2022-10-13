@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            outline: none;
+            border-radius: 10px;
+            width: 90%;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 18px;
+            width: 3px;
+            border-radius: 5px;
+            background: #FFFFFF;
+            -webkit-appearance: none;
+        }
+    </style>
+    <script>
+        function function1() {
+            a = document.getElementById("redOut").value = document.getElementById("redIn").value;
+            b = document.getElementById("greenOut").value = document.getElementById("greenIn").value;
+            c = document.getElementById("blueOut").value = document.getElementById("blueIn").value;
+            document.getElementById("colourOut").style.backgroundColor = "rgb(" + a + ',' + b + ',' + c + ")";
+        }
+        function function2() {
+            a = document.getElementById("redIn").value = document.getElementById("redOut").value;
+            b = document.getElementById("greenIn").value = document.getElementById("greenOut").value;
+            c = document.getElementById("blueIn").value = document.getElementById("blueOut").value;
+            document.getElementById("colourOut").style.backgroundColor = "rgb(" + a + ',' + b + ',' + c + ")";
+        }
+    </script>
+</head>
+
+<body style="text-align: center;">
+
+    <div style="width: 50%;height: 50px;background-color: rgb(128, 128, 128);" id="colourOut"></div><br>
+    <div>
+        R : <input type="number" id="redOut" value="128" style="width:5%;" oninput="function2()">
+        <input type="range" min="0" max="255" style="background: linear-gradient(to right, black , red);" id="redIn"
+            oninput="function1()">
+    </div><br>
+    <div>
+        G : <input type="number" id="greenOut" value="128" style="width:5%;" oninput="function2()">
+        <input type="range" min="0" max="255" style="background: linear-gradient(to right, black , green);" id="greenIn"
+            oninput="function1()">
+    </div><br>
+    <div>
+        B : <input type="number" id="blueOut" value="128" style="width:5%;" oninput="function2()">
+        <input type="range" min="0" max="255" style="background: linear-gradient(to right, black , blue);" id="blueIn"
+            oninput="function1()">
+    </div><br>
+
+</body>
+
+</html>

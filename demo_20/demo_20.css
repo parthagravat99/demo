@@ -1,0 +1,23 @@
+#mainSpan{
+    background-color:black;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 10px;
+    position: absolute;
+    top:15px;
+    left: 0px;
+    
+    
+}
+#inputDisplay{
+    width: 35px;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+.mainDiv{
+    position:relative
+}
+/* .numberInput{ 
+    position:relative;
+} */

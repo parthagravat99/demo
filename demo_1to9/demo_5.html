@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function function3() {
+            let option = document.getElementById("option").value;
+            if (option == "temperature") {
+                document.getElementById("op1").value = "celsius";
+                document.getElementById("op2").value = "ferenhite";
+            } else if (option == "speed") {
+                document.getElementById("op1").value = "kmph";
+                document.getElementById("op2").value = "mph";
+
+            } else if (option == "time") {
+                document.getElementById("op1").value = "minute";
+                document.getElementById("op2").value = "second";
+            } else if (option == "volume") {
+                document.getElementById("op1").value = "m^3";
+                document.getElementById("op2").value = "cm^3";
+            }
+        }
+        function function1() {
+            let option = document.getElementById("option").value;
+            if (option == "temperature") {
+                document.getElementById("data2").value = (document.getElementById("data1").value * 1.8) + 32;
+            } else if (option == "speed") {
+                document.getElementById("data2").value = (document.getElementById("data1").value * 1000);
+            } else if (option == "time") {
+                document.getElementById("data2").value = (document.getElementById("data1").value * 60);
+            } else {
+                document.getElementById("data2").value = (document.getElementById("data1").value * 1000000);
+            }
+        }
+        function function2() {
+            let option = document.getElementById("option").value;
+            if (option == "temperature") {
+                document.getElementById("data1").value = (document.getElementById("data2").value - 32) / 1.8;
+            } else if (option == "speed") {
+                document.getElementById("data1").value = (document.getElementById("data2").value / 1000);
+            } else if (option == "time") {
+                document.getElementById("data1").value = (document.getElementById("data2").value / 60);
+            } else {
+                document.getElementById("data1").value = (document.getElementById("data2").value / 1000000);
+            }
+        }
+    </script>
+</head>
+
+<body style="text-align: center;">
+    <table style="margin: auto;">
+        <tr>
+            <td colspan="3"><select style="width: 100%;height: 100%;" id="option" onchange="function3()">
+                    <option value="speed">Speed</option>
+                    <option value="temperature">Temperature</option>
+                    <option value="time">Time</option>
+                    <option value="volume">Volume</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td><input type="number" id="data1" value="" oninput="function1()"></td>
+            <td>=</td>
+            <td><input type="number" id="data2" value="" oninput="function2()"></td>
+        </tr>
+        <tr>
+            <td><input type="text" style="text-align: center;" value="kmph" id="op1" disabled></td>
+            <td> </td>
+            <td><input type="text" style="text-align: center;" value="mph" id="op2" disabled></td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myFunction() {
+            document.getElementById("total").innerHTML =
+                document.getElementById("price").value * document.getElementById("qty").value;
+        }
+    </script>
+</head>
+
+<body style="text-align: center;">
+    <form>
+        <label for="price">Price</label>
+        <input type="number" id="price" oninput="myFunction()" value="">
+        <label for="qty">xQty.</label>
+        <input type="number" id="qty" oninput="myFunction()" value="">
+    </form><br>
+    <p id="total"></p>
+</body>
+
+</html>
